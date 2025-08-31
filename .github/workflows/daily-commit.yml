@@ -1,0 +1,42 @@
+name: Daily Empty Commit
+
+on:
+  schedule:
+    - cron: '30 5 * * *'   # still runs daily at 05:30 UTC (~11:00 IST)
+  workflow_dispatch:
+
+permissions:
+  contents: write   # ensure we can push
+
+jobs:
+  daily_commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure Git
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+
+      - name: Create empty commit and push (stop after 25 Sep 2025 00:00 IST)
+        shell: bash
+        run: |
+          # Use IST for all date operations
+          export TZ="Asia/Kolkata"
+
+          # Current time in IST (epoch seconds)
+          NOW_TS=$(date +%s)
+
+          # Cutoff: 2025-09-25 00:00:00 IST (epoch seconds)
+          END_TS=$(date -d '2025-09-25 00:00:00' +%s)
+
+          if (( NOW_TS >= END_TS )); then
+            echo "Reached cutoff (2025-09-25 00:00 IST). Skipping commit."
+            exit 0
+          fi
+
+          git commit --allow-empty -m "Automated daily commit to track activity"
+          # Push to the checked-out branch (default branch on schedule runs)
+          git push
