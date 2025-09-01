@@ -27,3 +27,10 @@ This repository tracks my step-by-step progress for the **DigitalOcean Server Se
 - Verified login works only via the non-root user.
 
 ---
+
+At this stage, the following have been completed:
+
+- **Firewall**: Installed, enabled, and configured with rules for HTTP, HTTPS, SSH, and Keycloak (port 8080).
+- **System Packages**: Updated to the latest available versions.
+- **Core Services**: Apache, PHP (with required extensions), MariaDB, and Python are installed, enabled, and running.
+- **Database Security**: MariaDB has been hardened for production use with a root password, anonymous users removed, remote root login disabled, and privileges reloaded.
