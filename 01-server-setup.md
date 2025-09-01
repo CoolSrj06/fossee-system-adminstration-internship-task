@@ -61,8 +61,8 @@ sudo systemctl restart sshd
 
 ### Reconnect as coolSrj06
 
-Closed PuTTY root session and reconnected as coolSrj06.
+![alt text](image.png)
 
----
+
 
 
