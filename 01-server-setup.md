@@ -15,15 +15,54 @@
 
 ---
 
-## 2. Initial Access
+# Server Hardening – DigitalOcean Droplet
 
-Connected via SSH as root using the public IPv4 address:  
+## Access Method
+- Since my local machine is Windows, I used **PuTTY** to access the Droplet instead of native `ssh` commands.
+- Steps:
+  - Installed PuTTY from the official site.
+  - Used the Droplet IP as hostname in PuTTY.
+  - Logged in initially as `root`.
 
+## Commands Executed
+
+### 1. Create new non-root user
 ```bash
-ssh root@165.22.222.65
+adduser coolSrj06
+passwd coolSrj06
+```
+### 2.Grant sudo privileges
+```bash
+usermod -aG wheel coolSrj06
 ```
 
-## 3. Security Considerations
+### 3. Copy SSH key to new user
+```bash
+rsync --archive --chown=coolSrj06:coolSrj06 ~/.ssh /home/coolSrj06
+```
 
-1. Root login works at creation time, but will be disabled after.
-2. creating a non-root sudo user.
+### 4. Disable root login
+
+Edited the SSH config:
+```bash
+sudo nano /etc/ssh/sshd_config
+```
+
+
+**Changed:** 
+```nginx
+PermitRootLogin no
+```
+
+**Applied changes:**
+```bash
+sudo systemctl restart sshd
+```
+
+### Reconnect as coolSrj06
+
+Closed PuTTY root session and reconnected as coolSrj06.
+
+---
+
+
