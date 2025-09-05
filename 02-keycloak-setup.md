@@ -174,6 +174,12 @@ location: https://127.0.0.1:8443/admin/
 
 ### ✅ Final State
 
+![alt text](image-1.png)
+```
+https://134.209.152.76:8443/
+```
+
+
 1. Keycloak runs on HTTPS 8443
 2. Managed by systemd
 3. Auto-starts on reboot
