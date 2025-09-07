@@ -5,6 +5,16 @@
 
 ---
 
+## High-level Architecture
+```mermaid
+graph TD
+    U[User Browser] -->|HTTP/HTTPS| A[Apache httpd]
+    A -->|PHP 8.3| D[Drupal 11]
+    A -->|Reverse Proxy 8443| K[Keycloak SSO]
+    D -->|MariaDB 10.11| M[Database]
+    K -->|User Directory| UDB[Keycloak User Store]
+```
+
 ## 0) Assumptions & prerequisites
 
 - Droplet OS: **Rocky Linux 9** (or 10 – commands identical below).
@@ -265,4 +275,27 @@ Global settings:
 
 ---
 
-✅ You now have Drupal 11 on PHP 8.3 + MariaDB 10.11 with Keycloak SSO over HTTPS!
+### Finally the Login Flow
+```mermaid
+sequenceDiagram
+    participant User
+    participant Drupal
+    participant Keycloak
+
+    User->>Drupal: Open /user/login
+    Drupal-->>User: Show login form + "Login with Keycloak"
+    User->>Drupal: Click "Login with Keycloak"
+    Drupal->>Keycloak: Redirect to /auth endpoint
+    Keycloak-->>User: Show Keycloak login page
+    User->>Keycloak: Enter credentials (For Keycloak: Ex- USername: coolSrj06)
+    Keycloak->>Drupal: Redirect back with Authorization Code
+    Drupal->>Keycloak: Exchange code for ID Token & Access Token
+    Keycloak-->>Drupal: Return tokens (incl. email, profile)
+    Drupal->>Drupal: Create/Update local user (e.g. /user/2)
+    Drupal-->>User: Logged in as Keycloak account
+```
+
+✅ You now have Drupal 11 on PHP 8.3 + MariaDB 10.11 with Keycloak S
+
+
+
