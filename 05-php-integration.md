@@ -4,12 +4,12 @@ A minimal PHP app that authenticates users via Keycloak (OIDC) and runs behind A
 
 ### Topology
 + Keycloak: **https://<host>:8443/** (realm: **<your-realm>**)
-![alt text](image-9.png)
+![alt text](/images/image-9.png)
 + Apache vhost (:80)
     + Drupal: **http://<host>/**
-    ![alt text](image-10.png)
+    ![alt text](/images/image-10.png)
     + Django: **http://<host>/django/** → proxy to **127.0.0.1:8000**
-    ![alt text](image-11.png)
+    ![alt text](/images/image-11.png)
     + PHP app: **http://<host>/phpapp/** (served via PHP-FPM)
 
 ### Prerequisites
@@ -109,7 +109,7 @@ exit;
 ```
 
 Replace **< host >, < your-realm >, < your-secret >** with real values.
-![alt text](image-12.png)
+![alt text](/images/image-12.png)
 Optional: store these in env vars instead of hardcoding.
 
 #### 2. Apache vhost

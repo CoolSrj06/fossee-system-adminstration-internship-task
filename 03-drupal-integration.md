@@ -199,7 +199,7 @@ Enable in **Extend** → search “OpenID Connect”.
 3. Under **Client scopes**, ensure `email` and `profile` are default.  
 4. User in Keycloak must have a valid **email**.
 
-![alt text](image-5.png)
+![alt text](/images/image-5.png)
 
 ---
 
@@ -232,7 +232,7 @@ Global settings:
    - “No email address provided” → add email to Keycloak user & default email scope.  
    - “Failed to get tokens” → check client secret, endpoints, SELinux `httpd_can_network_connect=1`.
 
-   ![alt text](image-2.png)
+   ![alt text](/images/image-2.png)
 
 ---
 

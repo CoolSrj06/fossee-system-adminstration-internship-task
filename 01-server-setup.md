@@ -61,7 +61,7 @@ sudo systemctl restart sshd
 
 ### Reconnect as coolSrj06
 
-![alt text](image.png)
+![alt text](/images/image.png)
 
 ---
 
@@ -160,8 +160,3 @@ MariaDB is now secured:
 - Remote root login disabled.  
 - Test database removed.  
 - Privileges reloaded and active.  
-
-
-
-
-

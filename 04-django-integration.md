@@ -251,7 +251,7 @@ Admin URL:
 
 ⚠️ Redirect URI must match exactly (with trailing slash).
 
-![alt text](image-8.png)
+![alt text](/images/image-8.png)
 
 ## ⚡ Step 7: Common Pitfalls & Fixes
 
@@ -271,7 +271,7 @@ Admin URL:
 
 2. Redirect → Keycloak login page.
 
-![alt text](image-7.png)
+![alt text](/images/image-7.png)
 
 3. Authenticate with Keycloak.
 
@@ -281,4 +281,4 @@ Admin URL:
 
 6. If is_staff=True, access Django admin.
 
-![alt text](image-6.png)
+![alt text](/images/image-6.png)
