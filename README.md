@@ -49,7 +49,7 @@ First I want to demostrate the status of all the services running on droplet. I 
 For a smooth demo of this project I have created a new user, on Keycloak.
 
 + **username:** fosseeAdmin
-+ **password:** sysadmin
++ **password:** sysadmintask
 
 ## Demonstration
 
